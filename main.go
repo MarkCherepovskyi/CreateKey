@@ -125,7 +125,7 @@ func Search(size int, str string) string {
 	for _, dataStr := range buffer {
 		finalStr += fmt.Sprint(dataStr)
 	}
-	fmt.Println("time :", time.Since(start))
+	fmt.Println("time of search :", time.Since(start))
 
 	return finalStr
 }
