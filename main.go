@@ -48,18 +48,33 @@ var (
 )
 
 func main() {
-	str := Create(sizeRange[9])
-	Convert(str)
+
+	for _, data := range sizeRange {
+		strBinary := Create(data)
+		fmt.Println("Max key size  ", data)
+		fmt.Println("binary system")
+		fmt.Println(strBinary, "\n")
+
+		strHex := Convert(strBinary)
+
+		fmt.Println("hexadecimal system")
+		fmt.Println(strHex, "\n")
+
+	}
+
 	res := CreateRandomKey(sizeRange[9])
-	fmt.Println(res)
+	fmt.Println("Randon key ", res)
 	key := Convert(res)
 	fmt.Println(key)
 	fmt.Println()
-	resSer := Search(sizeRange[9], key)
+	resSer := Search(key)
 	fmt.Println(resSer)
+
 }
 
 func CreateRandomKey(size int) string {
+	rand.Seed(time.Now().Unix())
+
 	var array []int = make([]int, size)
 	str := ""
 	for index, _ := range array {
@@ -111,12 +126,12 @@ func f(index int, strByte string) string {
 	return "*"
 }
 
-func Search(size int, str string) string {
-	var buffer []string = make([]string, size)
+func Search(str string) string {
+	var buffer []string = make([]string, len(str))
 
 	var finalStr string
 	start := time.Now()
-	for index := 0; index < size/4; index++ {
+	for index := 0; index < len(str); index++ {
 		c := fmt.Sprintf("%c", str[index])
 		buffer[index] = f(index, c)
 
