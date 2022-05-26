@@ -53,22 +53,22 @@ func main() {
 		strBinary := Create(data)
 		fmt.Println("Max key size  ", data)
 		fmt.Println("binary system")
-		fmt.Println(strBinary, "\n")
+		fmt.Print(strBinary, "\n", "\n")
 
 		strHex := Convert(strBinary)
 
 		fmt.Println("hexadecimal system")
-		fmt.Println(strHex, "\n")
+		fmt.Printf("0x%s \n \n", strHex)
 
 	}
 
 	res := CreateRandomKey(sizeRange[9])
-	fmt.Println("Randon key ", res)
+	fmt.Print("Randon key ", res, "\n \n")
 	key := Convert(res)
-	fmt.Println(key)
+	fmt.Printf("0x%s \n \n", key)
 	fmt.Println()
 	resSer := Search(key)
-	fmt.Println(resSer)
+	fmt.Printf("0x%s", resSer)
 
 }
 
@@ -104,7 +104,7 @@ func Convert(val string) string {
 	for i, dataStr := range val {
 		buffer += fmt.Sprintf("%c", dataStr)
 		if (i+1)%4 == 0 {
-			//fmt.Println(buffer)
+
 			finalStr = fmt.Sprint(finalStr, values[buffer])
 			buffer = ""
 		}
